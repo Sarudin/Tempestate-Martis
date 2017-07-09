@@ -3,8 +3,6 @@ const BodyParser = require("body-parser")
 const massive = require("massive")
 const cors = require ("cors")
 const session = ("express-session")
-const config = require("./config")
-
 
 const app = module.exports = express();
 
