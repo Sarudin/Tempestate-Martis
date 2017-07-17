@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<html ng-app="tempeMartis">
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <title>Tempestate Martis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
-  <body ng-controller="mainCtrl">
-    <div class="jumbotron">
-      <h3 class="heading">Tempestate Martis: All about the weather on Mars</h3>
-    </div>
-
-    <div ng-repeat="day in weatherData" class="day-button">
-      <button>Terrestrial Date: </br> {{day.terrestrial_date}}</button>
+  <body ng-controller="buttonController">
+    <div style="display: flex; justify-content: space-around;">
+      <button ng-click="getStuff()">Click me!</input>
     </div>
 
 
 
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.js"></script>
-    <script src="./app/js/app.js"></script>
-    <script src="./app/js/mainCtrl.js"></script>
-    <script src="./app/js/marsDataService.js"></script>
-    <scropt src="./server/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./js/buttonController.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
