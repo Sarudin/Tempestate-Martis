@@ -5,9 +5,10 @@
     <title>Tempestate Martis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
-  <body ng-controller="buttonController">
+  <body ng-controller="buttonCtrl">
     <div style="display: flex; justify-content: space-around;">
-      <button ng-click="getStuff()">Click me!</input>
+      <button ng-click="getStuff()">Click me></button>
+      <p>{{terrestrial_date}}</p>
     </div>
 
 
@@ -16,7 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/buttonController.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./dist/js/bundle.js"></script>
+
   </body>
 </html>

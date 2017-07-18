@@ -1,4 +1,4 @@
-angular.module('buttonController', ($scope, weatherService) => {
+angular.module('app').controller('buttonCtrl', function($scope, weatherService) {
   $scope.terrestrialDates;
 
   $scope.getStuff = function() {
