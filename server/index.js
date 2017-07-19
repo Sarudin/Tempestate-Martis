@@ -5,33 +5,41 @@ const cors = require ("cors")
 const session = require("express-session")
 const axios = require("axios")
 
-const app = module.exports = express();
+const app = express();
 
 app.use(BodyParser.json());
 app.use(cors());
 
-app.use(express.static(__dirname + './../public')); // connects front end files
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(express.static(__dirname + '../dist')); // connects front end files
 
 //end points go here.
 app.get('/api/getLatest', (req, res, next) => {
   axios.get('http://marsweather.ingenology.com/v1/latest/').then(function(response) {
-    console.log(response.data.report);
-    res.status(200).send();
+    res.status(200).send(response);
   });
 });
 
 app.get('/api/getSol', (req, res, next) => {
   axios.get('http://marsweather.ingenology.com/v1/archive/?sol=155').then(response => {
-    console.log(response.data.results);
-    res.status(200).send();
+    res.status(200).send(response);
   })
 })
 
 
 app.get('/api/getAll', (req, res, next) => {
-  axios.get("http://marsweather.ingenology.com/v1/archive/?page=1").then(response => {
-    console.log(response.data.results);
-    res.status(200).send(response.data.results);
+  axios.get('http://marsweather.ingenology.com/v1/archive/?page=1').then(err, response => {
+    if (!err) {
+      res.status(200).send(response.data.results);
+    }
+    else {
+      console.log("error = " + err);
+    }
   })
 })
 
