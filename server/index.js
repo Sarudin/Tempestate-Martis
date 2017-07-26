@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + './../dist')); // connects front end files
+app.use(express.static(__dirname + './../dist/')); // connects front end files
 
 //end points go here.
 app.get('/api/getLatest', (req, res, next) => {
