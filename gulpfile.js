@@ -6,8 +6,7 @@ var gulp = require('gulp')
 , print = require('gulp-print')
 , uglify = require('gulp-uglify')
 , annotate = require('gulp-ng-annotate')
-, babel = require('gulp-babel')
-, browserSync = require('browser-sync');
+, babel = require('gulp-babel');
 
 cachebust = new CacheBuster();
 
@@ -52,6 +51,11 @@ gulp.task('build-img', function() {
       .pipe(gulp.dest('./dist/forms'));
 });
 
+gulp.task("views", function(){
+  return gulp.src("./public/views/*")
+  .pipe(gulp.dest("./dist/views"))
+});
+
 gulp.task('build-templates', function() {
    return gulp.src('./templates/*')
       .pipe(gulp.dest('./dist/templates'));
@@ -62,7 +66,7 @@ gulp.task('build-templates-clients', function() {
       .pipe(gulp.dest('./dist/templates/clients'));
 });
 
-gulp.task('build', ['build-css', 'build-js', 'build-img', 'build-templates', 'build-templates-clients', 'watch'], function() {
+gulp.task('build', ['build-css', 'build-js', 'build-img', 'build-templates', 'build-templates-clients', 'views', 'watch'], function() {
     return gulp.src('./index.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('dist'));
@@ -72,5 +76,5 @@ gulp.task('watch', function() {
     return gulp.watch(['./index.html','./partials/*.html', './templates/**/*.html', './styles/*.css', './js/**/*.js'], ['build']);
 });
 
-gulp.task('default', ['build-js', 'browser-sync', 'build-templates', 'build-templates-clients', 'build-img', 'build-css', 'watch'
+gulp.task('default', ['build-js', 'browser-sync', 'views', 'build-templates', 'build-templates-clients', 'build-img', 'build-css', 'watch'
 ]);

@@ -16,8 +16,8 @@ angular.module('app').controller('buttonCtrl', ["$scope", "weatherService", func
 angular.module('app').service('weatherService', ["$http", function ($http) {
   this.getAll = function () {
     return $http.get('/api/getAll').then(function (response) {
-      console.log("SHIT!!!");
-      return response;
+      console.log('response from service = ' + response.data);
+      return response.data;
     });
   };
 }]);

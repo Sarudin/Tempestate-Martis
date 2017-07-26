@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + '../dist')); // connects front end files
+app.use(express.static(__dirname + './../dist')); // connects front end files
 
 //end points go here.
 app.get('/api/getLatest', (req, res, next) => {
@@ -33,13 +33,9 @@ app.get('/api/getSol', (req, res, next) => {
 
 
 app.get('/api/getAll', (req, res, next) => {
-  axios.get('http://marsweather.ingenology.com/v1/archive/?page=1').then(err, response => {
-    if (!err) {
+  axios.get('http://marsweather.ingenology.com/v1/archive/?page=1').then(response => {
       res.status(200).send(response.data.results);
-    }
-    else {
       console.log("error = " + err);
-    }
   })
 })
 
