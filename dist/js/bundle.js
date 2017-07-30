@@ -5,7 +5,8 @@ angular.module('app', ['ui.router']);
 
 angular.module('app').controller('buttonCtrl', ["$scope", "weatherService", function ($scope, weatherService) {
   $scope.terrestrialDates;
-  $scope.getStuff = function () {
+
+  $scope.getWeather = function () {
     weatherService.getAll().then(function (response) {
       $scope.terrestrialDates = response;
     });

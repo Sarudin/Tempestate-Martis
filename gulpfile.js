@@ -10,15 +10,6 @@ var gulp = require('gulp')
 
 cachebust = new CacheBuster();
 
-// Static server
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
 gulp.task('build-css', function() {
   return gulp.src('./styles/*')
     .pipe(sourcemaps.init())
@@ -76,5 +67,5 @@ gulp.task('watch', function() {
     return gulp.watch(['./index.html','./partials/*.html', './templates/**/*.html', './styles/*.css', './js/**/*.js'], ['build']);
 });
 
-gulp.task('default', ['build-js', 'browser-sync', 'views', 'build-templates', 'build-templates-clients', 'build-img', 'build-css', 'watch'
+gulp.task('default', ['build-js', 'views', 'build-templates', 'build-templates-clients', 'build-img', 'build-css', 'watch'
 ]);

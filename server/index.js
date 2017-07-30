@@ -33,9 +33,11 @@ app.get('/api/getSol', (req, res, next) => {
 
 
 app.get('/api/getAll', (req, res, next) => {
+  // if (page === null || page === undefined || page < 1) {
+  //   page = 1;
+  // }
   axios.get('http://marsweather.ingenology.com/v1/archive/?page=1').then(response => {
       res.status(200).send(response.data.results);
-      console.log("error = " + err);
   })
 })
 
