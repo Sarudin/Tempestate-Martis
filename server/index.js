@@ -32,9 +32,9 @@ app.get('/api/getSol', (req, res, next) => {
 })
 
 
-app.get('/api/getAll', (req, res, next) => {
-  console.log('PAAAAAAAAAAAGE = ' + req.body.page);
-  axios.get('http://marsweather.ingenology.com/v1/archive/?page=' + req.body.page).then(response => {
+app.get('/api/getAll/:page', (req, res, next) => {
+  console.log('PAAAAAAAAAAAGE = ' + req.params.page);
+  axios.get('http://marsweather.ingenology.com/v1/archive/?page=' + req.params.page).then(response => {
       res.status(200).send(response.data.results);
   }).catch (function (err) {
     console.log(err);
