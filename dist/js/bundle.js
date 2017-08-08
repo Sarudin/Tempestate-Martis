@@ -5,9 +5,10 @@ angular.module('app', ['ui.router']);
 
 angular.module('app').controller('buttonCtrl', ["$scope", "weatherService", function ($scope, weatherService) {
   $scope.terrestrialDates;
+  $scope.page = 1;
 
   $scope.getWeather = function () {
-    weatherService.getAll().then(function (response) {
+    weatherService.getAll($scope.page).then(function (response) {
       $scope.terrestrialDates = response;
     });
   };
@@ -15,8 +16,8 @@ angular.module('app').controller('buttonCtrl', ["$scope", "weatherService", func
 'use strict';
 
 angular.module('app').service('weatherService', ["$http", function ($http) {
-  this.getAll = function () {
-    return $http.get('/api/getAll').then(function (response) {
+  this.getAll = function (page) {
+    return $http.get('/api/getAll', page).then(function (response) {
       console.log('response from service = ' + response.data);
       return response.data;
     });
