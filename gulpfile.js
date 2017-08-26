@@ -11,13 +11,13 @@ var gulp = require('gulp')
 cachebust = new CacheBuster();
 
 gulp.task('build-css', function() {
-  return gulp.src('./styles/*')
+  return gulp.src('./css/*')
     .pipe(sourcemaps.init())
     .pipe(sass())
     // .pipe(cachebust.resources())
     .pipe(concat('styles.css'))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./dist/css'))
 })
 
 gulp.task('build-js', function() {
@@ -37,18 +37,23 @@ gulp.task('build-img', function() {
       .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('build-img', function() {
+gulp.task('build-forms', function() {
    return gulp.src('./forms/**/*')
       .pipe(gulp.dest('./dist/forms'));
 });
 
-gulp.task("views", function(){
+gulp.task('build-vendor', function() {
+   return gulp.src('./vendor/**/*')
+      .pipe(gulp.dest('./dist/vendor'));
+});
+
+gulp.task('views', function(){
   return gulp.src("./public/views/*")
   .pipe(gulp.dest("./dist/views"))
 });
 
 gulp.task('build-templates', function() {
-   return gulp.src('./templates/*')
+   return gulp.src('./js/templates/*')
       .pipe(gulp.dest('./dist/templates'));
 });
 
@@ -57,7 +62,7 @@ gulp.task('build-templates-clients', function() {
       .pipe(gulp.dest('./dist/templates/clients'));
 });
 
-gulp.task('build', ['build-css', 'build-js', 'build-img', 'build-templates', 'build-templates-clients', 'views', 'watch'], function() {
+gulp.task('build', ['build-css', 'build-js', 'build-img', 'build-forms', 'build-vendor', 'build-templates', 'build-templates-clients', 'views', 'watch'], function() {
     return gulp.src('./index.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('dist'));
@@ -66,6 +71,3 @@ gulp.task('build', ['build-css', 'build-js', 'build-img', 'build-templates', 'bu
 gulp.task('watch', function() {
     return gulp.watch(['./index.html','./partials/*.html', './templates/**/*.html', './styles/*.css', './js/**/*.js'], ['build']);
 });
-
-gulp.task('default', ['build-js', 'views', 'build-templates', 'build-templates-clients', 'build-img', 'build-css', 'watch'
-]);

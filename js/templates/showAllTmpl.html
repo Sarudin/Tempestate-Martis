@@ -1,0 +1,26 @@
+<div>
+  Terrestrial Date: {{allWeather[0].terrestrial_date}} </br>
+  Mars Date (Sol): {{allWeather[0].sol}} </br>
+  LS: {{allWeather[0].ls}} </br>
+  Minimum Temp Celsius: {{allWeather[0].min_temp}} </br>
+  Minimum Temp Fahrenheit: {{allWeather[0].min_temp_fahrenheit}} </br>
+  Maxium Temp Celsius: {{allWeather[0].max_temp}} </br>
+  Minimum Temp Fahrenheit: {{allWeather[0].max_temp_fahrenheit}} </br>
+  Pressure: {{allWeather[0].pressure}} </br>
+  Pressure String: {{allWeather[0].pressure_string}} </br>
+  Absolute Humidity: {{allWeather[0].abs_humidity}} </br>
+  Wind Speed: {{allWeather[0].wind_speed}} </br>
+  Wind Direction: {{allWeather[0].wind_direction}} </br>
+  Atmospheric Opacity: {{allWeather[0].atmo_opacity}} </br>
+  Season: {{allWeather[0].season}} </br>
+  Sunrise: {{allWeather[0].sunrise}} </br>
+  Sunset: {{allWeather[0].sunset}} </br>
+</div>
+</br></br>
+<div style="display: flex; justify-content: space-around;">
+  <button ng-click="previousPage()">Previous Page</button>
+  <button ng-click="nextPage()">Next Page</button>
+</div>
+<div style="display: flex; justify-content: space-around;">
+  <button ui-sref="getAll">Back</button>
+</div>

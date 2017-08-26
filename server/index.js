@@ -20,20 +20,23 @@ app.use(express.static(__dirname + './../dist/')); // connects front end files
 
 //end points go here.
 app.get('/api/getLatest', (req, res, next) => {
-  axios.get('http://marsweather.ingenology.com/v1/latest/').then(function(response) {
-    res.status(200).send(response);
-  });
+  axios.get('http://marsweather.ingenology.com/v1/latest/').then(response => {
+    res.status(200).send(response.data);
+  }).catch (function (err) {
+    console.log(err);
+  })
 });
 
-app.get('/api/getSol', (req, res, next) => {
+app.get('/api/getByDate', (req, res, next) => {
   axios.get('http://marsweather.ingenology.com/v1/archive/?sol=155').then(response => {
-    res.status(200).send(response);
+    res.status(200).send(response.data);
+  }).catch (function (err) {
+    console.log(err);
   })
 })
 
 
 app.get('/api/getAll/:page', (req, res, next) => {
-  console.log('PAAAAAAAAAAAGE = ' + req.params.page);
   axios.get('http://marsweather.ingenology.com/v1/archive/?page=' + req.params.page).then(response => {
       res.status(200).send(response.data.results);
   }).catch (function (err) {
