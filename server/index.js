@@ -35,7 +35,6 @@ app.get('/api/getByDate', (req, res, next) => {
   })
 })
 
-
 app.get('/api/getAll/:page', (req, res, next) => {
   axios.get('http://marsweather.ingenology.com/v1/archive/?page=' + req.params.page).then(response => {
       res.status(200).send(response.data.results);
@@ -43,10 +42,6 @@ app.get('/api/getAll/:page', (req, res, next) => {
     console.log(err);
   })
 })
-
-
-
-
 
 const PORT = 5309;
 app.listen(PORT, function(){
